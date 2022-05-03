@@ -1,24 +1,12 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
+import Navbar from "./components/navbar";
+import Amazon from "./components/amazon";
 
 const App = () => {
-  const [num, setNum] = useState(0);
-  const [nums, setNums] = useState(0);
-
-  useEffect(() => {
-    alert("I got clicked");
-  });
-
   return (
     <div>
-      <h1>Hello World</h1>
-      <button
-        className="btn"
-        onClick={() => {
-          setNum(num + 1);
-        }}
-      >
-        Click me {num}
-      </button>
+      <Navbar />
+      <Amazon />
     </div>
   );
 };
