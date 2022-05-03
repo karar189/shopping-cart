@@ -1,21 +1,21 @@
 import React from "react";
 import "../styles/navbar.css";
 
-const Navbar = () => {
+const Navbar = ({ setShow, size }) => {
   return (
-    <div>
-      <nav>
-        <div className="nav_box">
-          <span className="my_shop">My Shopping</span>
-          <div className="cart">
-            <span>
-              <i class="fa-solid fa-cart-plus"></i>
-            </span>
-            <span>0</span>
-          </div>
+    <nav>
+      <div className="nav_box">
+        <span className="my_shop" onClick={() => setShow(true)}>
+          My Shopping
+        </span>
+        <div className="cart" onClick={() => setShow(false)}>
+          <span>
+            <i class="fa-solid fa-cart-plus"></i>
+          </span>
+          <span>{size}</span>
         </div>
-      </nav>
-    </div>
+      </div>
+    </nav>
   );
 };
 
