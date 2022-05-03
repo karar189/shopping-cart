@@ -3,11 +3,13 @@ import "../styles/cart.css";
 
 const Cart = ({ cart, setCart, handleChange }) => {
   const [price, setPrice] = useState(0);
+  const [count, setCount] = useState(0);
 
   const handleRemove = (id) => {
     const arr = cart.filter((item) => item.id !== id);
     setCart(arr);
     handlePrice();
+    handleTotal();
   };
 
   const handlePrice = () => {
@@ -16,8 +18,15 @@ const Cart = ({ cart, setCart, handleChange }) => {
     setPrice(ans);
   };
 
+  const handleTotal = () => {
+    let countInitial = 0;
+    cart.map((item) => (countInitial += item.amount));
+    setCount(countInitial);
+  };
+
   useEffect(() => {
     handlePrice();
+    handleTotal();
   });
 
   return (
@@ -39,9 +48,13 @@ const Cart = ({ cart, setCart, handleChange }) => {
           </div>
         </div>
       ))}
+
       <div className="total">
         <span>Total Price of your Cart</span>
         <span>Rs - {price}</span>
+      </div>
+      <div className="total">
+        <span>Total Items = {count}</span>
       </div>
     </article>
   );
